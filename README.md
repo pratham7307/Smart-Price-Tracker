@@ -229,8 +229,8 @@ Add a license appropriate to your repository after checking the original project
 
 **YOUR NAME**
 
-- GitHub: [@KaranRaghav50](https://github.com/KaranRaghav50)
-- Github: https://github.com/KaranRaghav50/Smart-Price-Tracker
+- GitHub: [@pratham7307](https://github.com/pratham7307)
+- Github:https://github.com/pratham7307/Smart-Price-Tracker
 
 ---
 
