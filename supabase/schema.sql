@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public.products (
     user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
     url TEXT NOT NULL,
     name TEXT NOT NULL,
-    current_price NUMERIC(10, 2) NOT NULL,
+    current_price NUMERIC(12, 2) NOT NULL,
     currency VARCHAR(10) DEFAULT 'USD',
     image_url TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS public.products (
 CREATE TABLE IF NOT EXISTS public.price_history (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     product_id UUID NOT NULL REFERENCES public.products(id) ON DELETE CASCADE,
-    price NUMERIC(10, 2) NOT NULL,
+    price NUMERIC(12, 2) NOT NULL,
     currency VARCHAR(10) DEFAULT 'USD',
     checked_at TIMESTAMPTZ DEFAULT NOW()
 );
