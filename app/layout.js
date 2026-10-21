@@ -7,11 +7,11 @@ export const metadata = {
     "Track product prices across e-commerce sites and get alerts on price drops",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ child }) {
   return (
     <html lang="en">
       <body>
-        {children}
+        {child}
 
         <Toaster richColors />
       </body>
