@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState } from "react";
 import { addProduct } from "@/app/actions";
 import AuthModal from "./AuthModal";
