@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public.products (
     user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
     url TEXT NOT NULL,
     name TEXT NOT NULL,
-    current_price NUMERIC(12, 2) NOT NULL,
+    current_price NUMERIC(10, 2) NOT NULL,
     currency VARCHAR(10) DEFAULT 'USD',
     image_url TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS public.products (
 CREATE TABLE IF NOT EXISTS public.price_history (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     product_id UUID NOT NULL REFERENCES public.products(id) ON DELETE CASCADE,
-    price NUMERIC(12, 2) NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
     currency VARCHAR(10) DEFAULT 'USD',
     checked_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -46,23 +46,23 @@ CREATE POLICY "Users can view their own products"
     USING (auth.uid() = user_id);
 
 DROP POLICY IF EXISTS "Users can insert their own products" ON public.products;
-CREATE POLICY "Users can insert their own products"
+CREATE POLICY "Users can insert their own product"
     ON public.products FOR INSERT
     WITH CHECK (auth.uid() = user_id);
 
 DROP POLICY IF EXISTS "Users can update their own products" ON public.products;
-CREATE POLICY "Users can update their own products"
+CREATE POLICY "Users can update their own product"
     ON public.products FOR UPDATE
     USING (auth.uid() = user_id);
 
 DROP POLICY IF EXISTS "Users can delete their own products" ON public.products;
-CREATE POLICY "Users can delete their own products"
+CREATE POLICY "Users can delete their own product"
     ON public.products FOR DELETE
     USING (auth.uid() = user_id);
 
 -- 7. Price History RLS Policies
 DROP POLICY IF EXISTS "Users can view history of their products" ON public.price_history;
-CREATE POLICY "Users can view history of their products"
+CREATE POLICY "Users can view history of their product"
     ON public.price_history FOR SELECT
     USING (
         EXISTS (
@@ -73,7 +73,7 @@ CREATE POLICY "Users can view history of their products"
     );
 
 DROP POLICY IF EXISTS "Users can insert history for their products" ON public.price_history;
-CREATE POLICY "Users can insert history for their products"
+CREATE POLICY "Users can insert history for their product"
     ON public.price_history FOR INSERT
     WITH CHECK (
         EXISTS (
