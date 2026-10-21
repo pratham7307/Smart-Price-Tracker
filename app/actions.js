@@ -19,7 +19,7 @@ export async function addProduct(formData) {
     } = await supabase.auth.getUser();
 
     if (!user) {
-      return { error: "Not authenticated. Please sign in first." };
+      return { error: "Not authenticated. Please Sign in first." };
     }
 
     // Scrape product data with Firecrawl
