@@ -30,7 +30,7 @@ function Badge({
   asChild = false,
   ...props
 }) {
-  const Comp = asChildren ? Slot : "span"
+  const Comp = asChild ? Slot : "span"
 
   return (
     <Comp
