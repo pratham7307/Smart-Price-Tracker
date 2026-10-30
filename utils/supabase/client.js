@@ -5,7 +5,7 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export const createClient = () => {
   if (!supabaseUrl || !supabaseKey) {
-    return {
+    return { 
       auth: {
         signInWithOAuth: async () => {
           alert(
